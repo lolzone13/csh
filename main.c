@@ -1,10 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
+#include <string.h>
+
+// test_files
+#include "tests/functions.h"
+
 
 // global variables
 #define BUFFER_SIZE 1024
 #define EXIT_FAILURE 1
-
+#define TOK_DELIM " \t\r\n\a"
 // colors
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_GREEN   "\x1b[32m"
@@ -15,7 +21,7 @@
 #define ANSI_COLOR_RESET   "\x1b[0m"
 
 
-//  
+//  readline
 char *lsh_read_line() {
     int bufsize = BUFFER_SIZE;
     int position = 0;
@@ -48,20 +54,32 @@ char *lsh_read_line() {
                 exit(EXIT_FAILURE);
             }
         }
+    }
+}
 
-
-
+char** lsh_split_line(char *line) {
+    
+    char **split_lines = (char **)malloc(1 * sizeof(char *));
+    
+    int position = 0;
+    char* line_pointer = strtok(line, TOK_DELIM);
+    
+    while(line_pointer != NULL) {
+        int string_length = strlen(line_pointer);
+        split_lines[position] = (char *)malloc(string_length * sizeof(char));
+        split_lines[position++] = line_pointer;
+        split_lines = realloc(split_lines, position+1);
+        line_pointer = strtok(NULL, TOK_DELIM);
 
     }
 
+    split_lines[position] = NULL;
+
+    return split_lines;
 }
 
-char** lsh_split_line(line) {
-    return line;
-}
-
-int lsh_execute(args) {
-    return args;
+int lsh_execute(char** hello) {
+    return 0;
 }
 
 void csh_loop(void) {
@@ -86,5 +104,10 @@ int main(int argc, char **argv) {
 
     csh_loop();
     //printf(ANSI_COLOR_RED     "This text is RED!"     ANSI_COLOR_RESET "\n");
+
+    // testing lol
+
+
+
     return 0;
 }
