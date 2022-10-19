@@ -102,12 +102,12 @@ void csh_loop(void) {
 
 int main(int argc, char **argv) {
 
-    csh_loop();
+    //csh_loop();
     //printf(ANSI_COLOR_RED     "This text is RED!"     ANSI_COLOR_RESET "\n");
 
     // testing lol
 
-
+    split_string_test();
 
     return 0;
 }

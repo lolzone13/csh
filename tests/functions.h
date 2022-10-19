@@ -5,5 +5,6 @@
 /* Prototypes for the functions */
 /* Sums two ints */
 char** lsh_split_line(char *line);
+void split_string_test();
 
 #endif
