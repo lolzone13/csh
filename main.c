@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
+#include <unistd.h>
 
 // test_files
-#include "tests/functions.h"
+#include "tests/tests.h"
 
 
 // global variables
@@ -22,7 +23,7 @@
 
 
 //  readline
-char *lsh_read_line() {
+char *csh_read_line() {
     int bufsize = BUFFER_SIZE;
     int position = 0;
     char* buffer = (char *)malloc(bufsize * sizeof(char));
@@ -57,7 +58,7 @@ char *lsh_read_line() {
     }
 }
 
-char** lsh_split_line(char *line) {
+char** csh_split_line(char *line) {
     
     char **split_lines = (char **)malloc(1 * sizeof(char *));
     
@@ -78,7 +79,7 @@ char** lsh_split_line(char *line) {
     return split_lines;
 }
 
-int lsh_execute(char** hello) {
+int csh_execute(char** hello) {
     return 0;
 }
 
@@ -89,9 +90,9 @@ void csh_loop(void) {
 
     do {
         printf("> ");
-        line = lsh_read_line();
-        args = lsh_split_line(line);
-        status = lsh_execute(args);
+        line = csh_read_line();
+        args = csh_split_line(line);
+        status = csh_execute(args);
 
         free(line);
         free(args);
