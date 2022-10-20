@@ -17,5 +17,6 @@ void split_string_test() {
         assert(strcmp(split_lines[i],need_string[i]) == 0);
     }
     printf("\x1b[32m" "split_string_test successful \n" "\x1b[0m");
+    free(split_lines);
     return;
 }
